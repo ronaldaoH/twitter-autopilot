@@ -27,16 +27,16 @@ type Bot struct {
 	Influencer     string
 	Cookies        bool
 	CookiesSession []*proto.NetworkCookieParam
-	User           User
+	User           *User
 	OutputCSV string
 	DoubleAuth bool
 
 }
 
 type User struct {
-	username string
-	password string
-	cookiesFile string
+	Username    string
+	Password    string
+	CookiesFile string
 }
 
 func (Bot *Bot) GoToURL_Wait(url string) {
@@ -46,7 +46,7 @@ func (Bot *Bot) GoToURL_Wait(url string) {
 
 func (Bot *Bot) SetCookies() {
 
-	file_cookies, _ := os.Open(Bot.User.cookiesFile)
+	file_cookies, _ := os.Open(Bot.User.CookiesFile)
 	cookies, _ := ioutil.ReadAll(file_cookies)
 
 	pn := []*proto.NetworkCookieParam{}
@@ -76,10 +76,10 @@ func (Bot *Bot) LoginWOCookies() {
 	_ = Bot.Page.Navigate("https://twitter.com/login")
 
 	el, _ := Bot.Page.Element(`[name="session[username_or_email]"]`)
-	el.Input(Bot.User.username)
+	el.Input(Bot.User.Username)
 
-	el, _ = Bot.Page.Element(`[type="password"]`)
-	el.Input(Bot.User.password)
+	el, _ = Bot.Page.Element(`[type="Password"]`)
+	el.Input(Bot.User.Password)
 
 	el.Press(input.Enter)
 	Bot.Page.WaitLoad()
@@ -102,7 +102,7 @@ func (Bot *Bot) CreateCookies() {
 		return
 	}
 
-	ioutil.WriteFile(Bot.User.cookiesFile, b, 0644)
+	ioutil.WriteFile(Bot.User.CookiesFile, b, 0644)
 }
 
 func (Bot *Bot) Login() {
@@ -226,9 +226,9 @@ func runBot() {
 	bot.Cookies = false
 	bot.Logger = make(chan string)
 	bot.OutputCSV = "./followers.csv"
-	bot.User.cookiesFile = "./cookies.txt"
-	bot.User.username = ""
-	bot.User.password = ""
+	bot.User.CookiesFile = "./cookies.txt"
+	bot.User.Username = ""
+	bot.User.Password = ""
 	bot.DoubleAuth = false
 
 	go func() {
