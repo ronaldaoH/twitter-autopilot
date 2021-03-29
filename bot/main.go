@@ -1,4 +1,4 @@
-package main
+package bot
 
 import (
 	"encoding/csv"
@@ -216,7 +216,7 @@ func (Bot *Bot) GetFollowers(num_records int) {
 	//Bot.CloseChannels()
 }
 
-func main() {
+func runBot() {
 	/*
 	const numFollowers = 100
 
