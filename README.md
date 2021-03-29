@@ -51,3 +51,7 @@ for {
 fmt.Println(len(bot.Followers))
 
 ```
+
+Results:
+![Twitter Autopilot GO](https://github.com/ronaldaoH/twitter-autopilot/blob/main/twitter-scraper-golang.png?raw=true)
+
