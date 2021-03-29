@@ -57,7 +57,7 @@ func (Bot *Bot) SetCookies() {
 }
 
 func (Bot *Bot) InitBrowser() {
-	l := launcher.New()//.Delete("--headless")
+	l := launcher.New().Delete("--headless")
 
 	u, _ := l.Set("no-sandbox", "").Launch()
 
