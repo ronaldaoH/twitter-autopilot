@@ -153,8 +153,10 @@ func (Bot *Bot) CreateCSV() {
 		records = append(records, follower)
 	}
 	for _, record := range records {
-		if err := w.Write(record); err != nil {
-			log.Fatalln("error writing record to csv:", err)
+		if len(record) >= 1{
+			if err := w.Write(record); err != nil {
+				log.Fatalln("error writing record to csv:", err)
+			}
 		}
 	}
 
