@@ -216,9 +216,14 @@ func (Bot *Bot) GetFollowers(num_records int) {
 	//Bot.CloseChannels()
 }
 
-func runBot() {
-	/*
+func run() {
+
 	const numFollowers = 100
+
+	usr:= &User{}
+	usr.CookiesFile = "./cookies.txt"
+	usr.Username = ""
+	usr.Password = ""
 
 	bot := &Bot{}
 	bot.Influencer = "chuisochuisez"
@@ -226,10 +231,8 @@ func runBot() {
 	bot.Cookies = false
 	bot.Logger = make(chan string)
 	bot.OutputCSV = "./followers.csv"
-	bot.User.CookiesFile = "./cookies.txt"
-	bot.User.Username = ""
-	bot.User.Password = ""
 	bot.DoubleAuth = false
+	bot.User = usr
 
 	go func() {
 		bot.InitBrowser()
@@ -264,7 +267,7 @@ func runBot() {
 	}
 	fmt.Println(len(bot.Followers))
 
-*/
+
 
 
 }
